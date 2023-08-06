@@ -1,4 +1,3 @@
-import defaultTheme from "tailwindcss/defaultTheme";
 import tailwindTypography from "@tailwindcss/typography";
 import plugin from "tailwindcss/plugin";
 
@@ -27,9 +26,6 @@ const tailwindConfig = {
       },
       borderRadius: {
         global: "var(--border-radius)",
-      },
-      fontFamily: {
-        sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
       },
       aspectRatio: {
         "5/3": "5/3",

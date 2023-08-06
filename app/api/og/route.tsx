@@ -3,12 +3,7 @@ import { ImageResponse } from "next/server";
 
 export const runtime = "edge";
 
-const fontBold = fetch(
-  new URL("../../../public/fonts/Biotif-Bold.woff", import.meta.url),
-).then((res) => res.arrayBuffer());
-
 export async function GET(request: Request) {
-  const fontData = await fontBold;
   const url = new URL(request.url);
   const title = url.searchParams.get("title");
   const date = url.searchParams.get("date");
@@ -78,13 +73,6 @@ export async function GET(request: Request) {
     {
       width: 1200,
       height: 600,
-      fonts: [
-        {
-          name: "Biotif",
-          data: fontData,
-          style: "normal",
-        },
-      ],
     },
   );
 }

@@ -1,6 +1,5 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { fontSans } from "@/lib/fonts";
 import config from "@/lib/siteConfig";
 import { cn } from "@/lib/utils";
 import "@/styles/global.css";
@@ -57,7 +56,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          fontSans.variable,
           "text-foreground-primary bg-background min-h-screen font-sans",
           "selection:bg-accent selection:text-white",
         )}>
