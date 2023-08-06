@@ -7,7 +7,7 @@ import { defineDocumentType } from "contentlayer/source-files";
 const BlogPost = defineDocumentType(() => ({
   name: "BlogPost",
   contentType: "mdx",
-  filePathPattern: "blog/**/*.mdx",
+  filePathPattern: "*.md",
   fields: {
     title: {
       type: "string",
@@ -41,7 +41,7 @@ const BlogPost = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: "string",
-      resolve: (post) => slugify(post._raw.sourceFileName.replace(".mdx", "")),
+      resolve: (post) => slugify(post._raw.flattenedPath),
     },
     headings: {
       type: "json",
