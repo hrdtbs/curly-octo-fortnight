@@ -19,7 +19,7 @@ const Page = () => {
 
   return (
     <main>
-      <BlogPageLayout title="Recent Blog Posts">
+      <BlogPageLayout title="All Blog Posts">
         <RenderPosts posts={blogs} />
       </BlogPageLayout>
     </main>
