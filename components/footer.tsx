@@ -1,14 +1,11 @@
 import config from "@/lib/siteConfig";
 import { cn } from "@/lib/utils";
-import { GitHub, LinkedIn, Mail, Telegram, Twitter } from "iconoir-react";
+import { GitHub, Twitter } from "iconoir-react";
 import Link from "./link";
 
 const socialLinks = [
   { icon: GitHub, href: config.socials.github, title: "Github" },
-  { icon: LinkedIn, href: config.socials.linkedin, title: "LinkedIn" },
   { icon: Twitter, href: config.socials.twitter, title: "Twitter" },
-  { icon: Telegram, href: config.socials.telegram, title: "Telegram" },
-  { icon: Mail, href: `mailto:${config.socials.email}`, title: "Email" },
 ];
 
 const Footer = () => {
@@ -33,7 +30,7 @@ const Footer = () => {
       <div className="text-center">
         <p>Built using Next.js, Tailwind CSS and Contentlayer.</p>
         <p className="text-sm mt-2">
-          © {new Date().getFullYear()}, Saurabh Charde. All rights reserved.
+          © {new Date().getFullYear()}, hrdtbs. All rights reserved.
         </p>
       </div>
     </footer>
