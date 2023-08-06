@@ -1,5 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":preserveSemverRanges", "config:best-practices"],
+  "extends": [
+    "config:recommended",
+    ":preserveSemverRanges",
+    "config:best-practices"
+  ],
   "labels": ["dependencies"]
 }
