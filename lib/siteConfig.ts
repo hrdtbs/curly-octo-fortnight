@@ -8,6 +8,7 @@ const siteConfig = {
   socials: {
     github: "https://github.com/hrdtbs",
     twitter: "https://twitter.com/meows_whisker",
+    site: "https://curly-octo-fortnight.vercel.app",
   },
   blog: {
     postPerPage: 10,
