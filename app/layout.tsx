@@ -4,6 +4,7 @@ import config from "@/lib/siteConfig";
 import { cn } from "@/lib/utils";
 import "@/styles/global.css";
 import { Metadata } from "next";
+import styles from "@/app/layout.module.css";
 
 export const metadata: Metadata = {
   title: {
@@ -49,19 +50,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  peek,
 }: {
   children: React.ReactNode;
+  peek: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="ja" suppressHydrationWarning>
       <body
         className={cn(
           "text-foreground-primary bg-background min-h-screen font-sans",
           "selection:bg-accent selection:text-white",
         )}>
         <Header />
-        <div className="max-w-container-center min-h-screen my-8 lg:my-12">
+        <div className={styles.root}>
           {children}
+          {peek}
         </div>
         <Footer />
       </body>
