@@ -62,7 +62,9 @@ export default function RootLayout({
           "selection:bg-accent selection:text-white",
         )}>
         <Header />
-        {children}
+        <div className="max-w-container-center min-h-screen my-8 lg:my-12">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

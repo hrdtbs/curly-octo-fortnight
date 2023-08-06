@@ -4,10 +4,7 @@ import ThemeToggle from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import ThemeProvider from "@/contexts/theme-provider";
 
-const navLinks = [
-  { text: "Home", href: "/" },
-  { text: "Blog", href: "/blog" },
-];
+const navLinks = [{ text: "Home", href: "/" }];
 
 const Header = () => {
   return (
