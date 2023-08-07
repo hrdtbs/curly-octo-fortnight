@@ -1,3 +1,4 @@
+import BackButton from "@/components/back-button";
 import Image from "@/components/image";
 import Link from "@/components/link";
 import MDXContent from "@/components/mdx/mdx-content";
@@ -48,19 +49,9 @@ const Page = ({ params }: { params: { slug: string } }) => {
   return (
     <main
       className={cn(
-        "my-10 lg:my-16 xl:my-20 [--_space:2.5rem] lg:[--_space:5rem]",
+        "my-10 lg:my-16 xl:my-20 [--_space:2.5rem] lg:[--_space:5rem] flex-1",
       )}>
-      <Link
-        href="/"
-        className={cn(
-          "inline-flex gap-1 items-center text-accent text-sm",
-          "-ml-1 mb-[--_space] font-medium",
-          "hover:text-accent hover:no-underline",
-          "lg:text-base lg:leading-none",
-        )}>
-        <NavArrowLeft />
-        <span>Back</span>
-      </Link>
+      <BackButton />
       <div
         className={cn(
           "flex flex-col-reverse gap-8 pb-[--_space]",
