@@ -1,4 +1,4 @@
-import { cn, formatDate, isArrayNotEmpty, slugify } from "@/lib/utils";
+import { formatDate, isArrayNotEmpty, slugify } from "@/lib/utils";
 import PostTag from "./post-tag";
 import Link from "@/components/link";
 import Image from "@/components/image";
@@ -33,18 +33,13 @@ const BlogCard = ({
         />
       )}
       <div>
-        <p className={cn("text-accent text-sm font-medium mb-4")}>
-          {formatDate(date)}
-        </p>
-        <h3
-          className={cn(
-            "font-medium text-xl md:text-2xl mb-2 hover:underline",
-          )}>
+        <p>{formatDate(date)}</p>
+        <h3>
           <Link href={href}>{title}</Link>
         </h3>
-        <p className={cn("text-foreground-secondary")}>{desc}</p>
+        <p>{desc}</p>
         {isArrayNotEmpty(tags) && (
-          <div className={cn("mt-4 flex gap-2 flex-wrap")}>
+          <div>
             {tags.map((tag) => (
               <Link key={tag} href={`/tags/${slugify(tag)}`}>
                 <PostTag>{tag}</PostTag>

@@ -1,5 +1,3 @@
-import { cn } from "@/lib/utils";
-
 const tagColors = [
   "dark:text-purple-50 dark:bg-purple-950 text-purple-950 bg-purple-100",
   "dark:text-amber-50 dark:bg-amber-950 text-amber-950 bg-amber-100",
@@ -18,7 +16,7 @@ const PostTag = ({ children }: { children: string }) => {
   currentIdx = currentIdx >= tagColors.length ? 0 : currentIdx;
 
   return (
-    <p className={cn("tag", tagColor)}>
+    <p>
       <span className="align-middle">{children}</span>
     </p>
   );

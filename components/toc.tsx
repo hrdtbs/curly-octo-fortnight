@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "@/components/link";
-import { cn, isArrayNotEmpty } from "@/lib/utils";
+import { isArrayNotEmpty } from "@/lib/utils";
 import { NavArrowRight } from "iconoir-react";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -20,15 +20,9 @@ export const TocMobile = ({ contents, className }: TocProps) => {
   if (!isArrayNotEmpty(contents)) return null;
 
   return (
-    <div className={cn("my-6", className)}>
+    <div>
       <DropdownMenu modal={false}>
-        <DropdownMenuTrigger
-          className={cn(
-            "flex gap-2 items-center text-sm text-[--color-body]",
-            "bg-[--color-toc-button-bg] border border-borders",
-            "py-2 pr-[0.5em] pl-[1em] rounded-global font-medium",
-            "[&>svg]:data-[state=open]:rotate-90 [&>svg]:text-xs",
-          )}>
+        <DropdownMenuTrigger>
           <span>On this page</span>
           <NavArrowRight />
         </DropdownMenuTrigger>
@@ -38,20 +32,8 @@ export const TocMobile = ({ contents, className }: TocProps) => {
           onCloseAutoFocus={(e) => e.preventDefault()}
           align="start"
           sideOffset={10}
-          avoidCollisions={false}
-          className={cn(
-            "w-[calc(var(--radix-dropdown-menu-content-available-width)-var(--px-padding))]",
-            "lg:w-fit xl:hidden",
-            "data-[state=open]:animate-slide-up-fade",
-            "data-[state=closed]:animate-slide-down-fade",
-          )}>
-          <nav
-            className={cn(
-              "bg-[--color-toc-button-bg] text-[--color-body]",
-              "border border-borders rounded-global p-4",
-              "min-w-[50vw] max-h-[50vh] overflow-y-auto",
-              "max-xl:shadow-md",
-            )}>
+          avoidCollisions={false}>
+          <nav>
             <ul>
               {contents.map((e) => {
                 if (e.depth > 2) return;
@@ -104,21 +86,12 @@ const TocDesktop = ({ contents, className }: TocProps) => {
     <div className={className}>
       <nav className="pl-8">
         <p className="text-xl pb-4 font-medium">On this page</p>
-        <ul className={cn("max-lg:shadow-md bg-transparent p-0")}>
+        <ul>
           {contents.map((e) => {
             if (e.depth > 2) return;
             return (
               <li key={e.text}>
-                <Link
-                  href={`#${e.slug}`}
-                  className={cn(
-                    "block p-2 text-[--color-body] hover:text-accent px-4 py-2",
-                    "border-l-2 border-l-borders",
-                    "[&.active]:border-l-accent [&.active]:text-accent",
-                    hash === e.slug && "active",
-                  )}>
-                  {e.text}
-                </Link>
+                <Link href={`#${e.slug}`}>{e.text}</Link>
               </li>
             );
           })}

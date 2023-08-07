@@ -1,5 +1,4 @@
 import config from "@/lib/siteConfig";
-import { cn } from "@/lib/utils";
 import { GitHub, Twitter } from "iconoir-react";
 import Link from "./link";
 
@@ -10,11 +9,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer
-      className={cn(
-        "flex flex-col items-center gap-8 px-2 py-10 lg:py-12",
-        "border-t border-borders text-foreground-secondary",
-      )}>
+    <footer>
       <div className="flex gap-4 justify-center">
         {socialLinks.map((link) => (
           <Link

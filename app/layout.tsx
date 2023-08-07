@@ -1,8 +1,6 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import config from "@/lib/siteConfig";
-import { cn } from "@/lib/utils";
-import "@/styles/global.css";
 import { Metadata } from "next";
 import styles from "@/app/layout.module.css";
 
@@ -57,11 +55,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" suppressHydrationWarning>
-      <body
-        className={cn(
-          "text-foreground-primary bg-background min-h-screen font-sans",
-          "selection:bg-accent selection:text-white",
-        )}>
+      <body>
         <Header />
         <div className={styles.root}>
           {children}

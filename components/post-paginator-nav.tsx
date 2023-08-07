@@ -1,5 +1,4 @@
 import Link from "@/components/link";
-import { cn } from "@/lib/utils";
 import { ArrowLeft, ArrowRight } from "iconoir-react";
 
 const PaginatorButton = ({
@@ -11,13 +10,7 @@ const PaginatorButton = ({
   disable: boolean;
   children: React.ReactNode;
 }) => {
-  return (
-    <Link
-      href={`/page/${goTo}`}
-      className={cn("flex gap-2 text-sm p-2", disable && "hidden")}>
-      {children}
-    </Link>
-  );
+  return <Link href={`/page/${goTo}`}>{children}</Link>;
 };
 
 const PostPaginatorNav = ({
@@ -38,15 +31,7 @@ const PostPaginatorNav = ({
           const pageNumber = idx + 1;
           return (
             <li key={pageNumber}>
-              <Link
-                href={`/page/${pageNumber}`}
-                className={cn(
-                  "w-10 h-10 flex justify-center items-center rounded-md",
-                  currentPage === pageNumber &&
-                    "bg-background-secondary border border-borders pointer-events-none",
-                )}>
-                {pageNumber}
-              </Link>
+              <Link href={`/page/${pageNumber}`}>{pageNumber}</Link>
             </li>
           );
         })}

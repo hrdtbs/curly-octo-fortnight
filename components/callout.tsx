@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils";
 import { Cancel, InfoEmpty, WarningTriangle } from "iconoir-react";
 
 const calloutVariants = {
@@ -30,12 +29,7 @@ const Callout = ({ children, className, variant = "note" }: CalloutProps) => {
   const { icon: Icon, styles, title } = calloutVariants[variant];
 
   return (
-    <div
-      className={cn(
-        "not-prose p-4 md:p-6 lg:p-8 my-4 rounded-global",
-        styles,
-        className,
-      )}>
+    <div>
       <p className="flex gap-2 items-center pb-4">
         <Icon />
         <span className="font-medium">{title}</span>

@@ -8,7 +8,6 @@ import ScrollButton from "@/components/scroll-button";
 import TocDesktop, { TocMobile } from "@/components/toc";
 import { allSortedBlogs } from "@/lib/contentlayer";
 import {
-  cn,
   formatDate,
   generateCommonMeta,
   isArrayNotEmpty,
@@ -47,24 +46,11 @@ const Page = ({ params }: { params: { slug: string } }) => {
   const moreThanOneHeading = post.headings && post.headings.length > 1;
 
   return (
-    <main
-      className={cn(
-        "my-10 lg:my-16 xl:my-20 [--_space:2.5rem] lg:[--_space:5rem] flex-1",
-      )}>
+    <main>
       <BackButton />
-      <div
-        className={cn(
-          "flex flex-col-reverse gap-8 pb-[--_space]",
-          "border-b border-b-borders",
-          "lg:flex-row [&>*]:flex-1",
-        )}>
+      <div>
         <ProseLayout>
-          <div
-            className={cn(
-              "not-prose text-foreground-secondary text-sm font-medium",
-              "flex gap-6 flex-wrap mb-6 lg:mb-10",
-              "[&_svg]:text-xs [&>*]:flex [&>*]:gap-2",
-            )}>
+          <div>
             <time dateTime={post.date}>
               <Calendar />
               {formatDate(post.date, "full")}
@@ -73,7 +59,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
           <h1 className="md:leading-tight">{post.title}</h1>
           <p className="mt-0 lg:mt-0">{post.description}</p>
           {isArrayNotEmpty(post.tags) && (
-            <div className={cn("flex gap-2 flex-wrap not-prose")}>
+            <div>
               {post.tags.map((tag) => (
                 <Link key={tag} href={`/tags/${slugify(tag)}`}>
                   <PostTag>{tag}</PostTag>
@@ -93,24 +79,9 @@ const Page = ({ params }: { params: { slug: string } }) => {
           </div>
         )}
       </div>
-      <div
-        className={cn(
-          "mt-[--_space]",
-          "xl:flex xl:flex-row-reverse xl:justify-between",
-        )}>
-        {moreThanOneHeading && (
-          <TocDesktop
-            contents={post.headings}
-            className={cn(
-              "hidden sticky top-32 self-start flex-[0_0_25%] xl:block",
-            )}
-          />
-        )}
-        <ProseLayout
-          className={cn(
-            "max-xl:mx-auto",
-            post.headings.length < 1 && "mx-auto",
-          )}>
+      <div>
+        {moreThanOneHeading && <TocDesktop contents={post.headings} />}
+        <ProseLayout>
           {moreThanOneHeading && (
             <TocMobile contents={post.headings} className="xl:hidden" />
           )}

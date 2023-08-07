@@ -1,5 +1,3 @@
-import { cn } from "@/lib/utils";
-
 const BlogPageLayout = ({
   children,
   title,
@@ -16,7 +14,7 @@ const BlogPageLayout = ({
   return (
     <Element className={className}>
       <h2 className="page-heading">{title}</h2>
-      <div className={cn("post-grid", gridClassName)}>{children}</div>
+      <div>{children}</div>
     </Element>
   );
 };
