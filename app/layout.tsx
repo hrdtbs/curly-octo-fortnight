@@ -2,7 +2,8 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import config from "@/lib/siteConfig";
 import { Metadata } from "next";
-import styles from "@/app/layout.module.css";
+import "@/app/global.css";
+import { css } from "@/styled-system/css";
 
 export const metadata: Metadata = {
   title: {
@@ -55,11 +56,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" suppressHydrationWarning>
-      <body>
-        <Header />
-        <div className={styles.root}>
-          {children}
-          {peek}
+      <body
+        className={css({
+          backgroundColor: "sky.50",
+          color: "slate.700",
+        })}>
+        <div
+          className={css({
+            minHeight: "100vh",
+          })}>
+          <Header />
+          <div>
+            {children}
+            {peek}
+          </div>
         </div>
         <Footer />
       </body>

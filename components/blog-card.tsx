@@ -2,6 +2,7 @@ import { formatDate, isArrayNotEmpty, slugify } from "@/lib/utils";
 import PostTag from "./post-tag";
 import Link from "@/components/link";
 import Image from "@/components/image";
+import { css } from "@/styled-system/css";
 
 type BlogCardProps = {
   img?: string;
@@ -10,20 +11,20 @@ type BlogCardProps = {
   desc: string;
   tags?: string[];
   href: string;
-  className?: string;
 };
 
-const BlogCard = ({
-  title,
-  desc,
-  tags,
-  date,
-  img,
-  href,
-  className,
-}: BlogCardProps) => {
+const BlogCard = ({ title, desc, tags, date, img, href }: BlogCardProps) => {
   return (
-    <article className={className}>
+    <article
+      className={css({
+        cursor: "pointer",
+        transition: "shadow 50ms ease-in-out",
+        shadow: {
+          base: "sm",
+          _hover: "lg",
+        },
+        padding: "16px",
+      })}>
       {img && (
         <Image
           className="post-img mb-6"
@@ -32,14 +33,42 @@ const BlogCard = ({
           alt={title}
         />
       )}
-      <div>
-        <p>{formatDate(date)}</p>
-        <h3>
+      <div
+        className={css({
+          display: "grid",
+          gap: 2,
+        })}>
+        <time
+          className={css({
+            fontSize: "sm",
+            color: "amber.600",
+          })}
+          dateTime={date.toString()}>
+          {formatDate(date)}
+        </time>
+        <h3
+          className={css({
+            fontSize: "xl",
+            color: "slate.900",
+            fontWeight: "medium",
+          })}>
           <Link href={href}>{title}</Link>
         </h3>
-        <p>{desc}</p>
+        <p
+          className={css({
+            fontSize: "sm",
+            color: "slate.500",
+          })}>
+          {desc}
+        </p>
         {isArrayNotEmpty(tags) && (
-          <div>
+          <div
+            className={css({
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 2,
+              mt: 2,
+            })}>
             {tags.map((tag) => (
               <Link key={tag} href={`/tags/${slugify(tag)}`}>
                 <PostTag>{tag}</PostTag>

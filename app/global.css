@@ -1,0 +1,9 @@
+@layer reset, base, tokens, recipes, utilities;
+
+html,
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
