@@ -6,7 +6,7 @@ const PostTag = ({ children }: { children: string }) => {
     <span
       className={clsx(
         css({
-          display: "block",
+          display: "inline-block",
           fontSize: "sm",
           color: "amber.600",
           backgroundColor: "amber.50",

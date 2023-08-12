@@ -5,7 +5,7 @@ import MDXContent from "@/components/mdx/mdx-content";
 import PostTag from "@/components/post-tag";
 import ProseLayout from "@/components/prose-layout";
 import ScrollButton from "@/components/scroll-button";
-import TocDesktop, { TocMobile } from "@/components/toc";
+import TocDesktop from "@/components/toc";
 import { allSortedBlogs } from "@/lib/contentlayer";
 import {
   formatDate,
@@ -13,7 +13,8 @@ import {
   isArrayNotEmpty,
   slugify,
 } from "@/lib/utils";
-import { Calendar, NavArrowLeft } from "iconoir-react";
+import { css } from "@/styled-system/css";
+import { Calendar } from "iconoir-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -46,20 +47,51 @@ const Page = ({ params }: { params: { slug: string } }) => {
   const moreThanOneHeading = post.headings && post.headings.length > 1;
 
   return (
-    <main>
-      <BackButton />
+    <div
+      className={css({
+        px: {
+          base: 4,
+          md: 8,
+        },
+        pt: 8,
+        pb: 16,
+      })}>
+      <div
+        className={css({
+          mb: 16,
+        })}>
+        <BackButton />
+      </div>
       <div>
-        <ProseLayout>
+        <ProseLayout
+          className={css({
+            pb: 8,
+            borderBottom: "1px solid",
+            borderColor: "slate.200",
+          })}>
           <div>
-            <time dateTime={post.date}>
+            <time
+              dateTime={post.date}
+              className={css({
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                color: "slate.500",
+              })}>
               <Calendar />
               {formatDate(post.date, "full")}
             </time>
           </div>
-          <h1 className="md:leading-tight">{post.title}</h1>
-          <p className="mt-0 lg:mt-0">{post.description}</p>
+          <h1>{post.title}</h1>
+          <p>{post.description}</p>
           {isArrayNotEmpty(post.tags) && (
-            <div>
+            <div
+              className={css({
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 2,
+                mt: 2,
+              })}>
               {post.tags.map((tag) => (
                 <Link key={tag} href={`/tags/${slugify(tag)}`}>
                   <PostTag>{tag}</PostTag>
@@ -79,17 +111,31 @@ const Page = ({ params }: { params: { slug: string } }) => {
           </div>
         )}
       </div>
-      <div>
-        {moreThanOneHeading && <TocDesktop contents={post.headings} />}
+      <div
+        className={css({
+          lg: {
+            display: "flex",
+            flexDirection: "row-reverse",
+            justifyContent: "space-between",
+          },
+        })}>
+        {moreThanOneHeading && (
+          <TocDesktop
+            className={css({
+              display: {
+                base: "none",
+                lg: "block",
+              },
+            })}
+            contents={post.headings}
+          />
+        )}
         <ProseLayout>
-          {moreThanOneHeading && (
-            <TocMobile contents={post.headings} className="xl:hidden" />
-          )}
           <MDXContent code={post.body.code} />
         </ProseLayout>
         <ScrollButton />
       </div>
-    </main>
+    </div>
   );
 };
 
