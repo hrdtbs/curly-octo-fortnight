@@ -50,8 +50,8 @@ const Page = ({ params }: { params: { slug: string } }) => {
     <div
       className={css({
         px: {
-          base: 4,
-          md: 8,
+          base: 8,
+          md: 16,
         },
         pt: 8,
         pb: 16,
@@ -114,9 +114,9 @@ const Page = ({ params }: { params: { slug: string } }) => {
       <div
         className={css({
           lg: {
-            display: "flex",
-            flexDirection: "row-reverse",
-            justifyContent: "space-between",
+            display: "grid",
+            gridTemplateColumns: "320px 1fr",
+            gap: 16,
           },
         })}>
         {moreThanOneHeading && (
@@ -126,14 +126,20 @@ const Page = ({ params }: { params: { slug: string } }) => {
                 base: "none",
                 lg: "block",
               },
+              width: 280,
             })}
             contents={post.headings}
           />
         )}
-        <ProseLayout>
-          <MDXContent code={post.body.code} />
-        </ProseLayout>
-        <ScrollButton />
+        <div
+          className={css({
+            overflow: "hidden",
+          })}>
+          <ProseLayout>
+            <MDXContent code={post.body.code} />
+          </ProseLayout>
+          <ScrollButton />
+        </div>
       </div>
     </div>
   );

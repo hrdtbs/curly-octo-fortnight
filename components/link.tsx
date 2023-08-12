@@ -1,3 +1,5 @@
+import { css } from "@/styled-system/css";
+import { flex } from "@/styled-system/patterns";
 import { ArrowTr } from "iconoir-react";
 import { default as NextLink } from "next/link";
 import { forwardRef } from "react";
@@ -20,6 +22,14 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
     <Link
       href={href}
       ref={forwardedRef}
+      className={css({
+        display: "inline-flex",
+        alignItems: "center",
+        color: "amber.600",
+        _hover: {
+          textDecoration: "underline",
+        },
+      })}
       {...(isExternalLink
         ? {
             rel: "noopener noreferrer nofollow",
@@ -28,7 +38,10 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
       {...restProps}>
       {children}
       {isExternalLink && showIcon && (
-        <span className="inline-flex text-[0.7em]">
+        <span
+          className={css({
+            fontSize: "xs",
+          })}>
           <ArrowTr />
         </span>
       )}

@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "@/components/link";
+import { css } from "@/styled-system/css";
+import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 
 type TocProps = {
@@ -35,14 +37,37 @@ const TocDesktop = ({ contents, className }: TocProps) => {
   if (!contents.length) return null;
   return (
     <div className={className}>
-      <nav className="pl-8">
-        <p className="text-xl pb-4 font-medium">On this page</p>
+      <nav
+        className={css({
+          p: 8,
+          position: "sticky",
+          top: 0,
+        })}>
         <ul>
           {contents.map((e) => {
             if (e.depth > 2) return;
             return (
               <li key={e.text}>
-                <Link href={`#${e.slug}`}>{e.text}</Link>
+                <Link
+                  href={`#${e.slug}`}
+                  className={clsx(
+                    css({
+                      display: "block",
+                      fontSize: "md",
+                      color: "slate.600",
+                      py: 2,
+                      px: 4,
+                      whiteSpace: "nowrap",
+                      borderLeft: "2px solid",
+                      borderLeftColor: "slate.400",
+                      "&.active": {
+                        borderLeftColor: "amber.600",
+                      },
+                    }),
+                    hash === e.slug && "active",
+                  )}>
+                  {e.text}
+                </Link>
               </li>
             );
           })}
