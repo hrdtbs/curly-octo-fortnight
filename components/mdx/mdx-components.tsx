@@ -12,7 +12,32 @@ const mdxComponents: MDXComponents = {
   a: MarkdownLink,
   div: MarkdownCodeTitles as any,
   pre: MarkdownPreCode,
-  table: MarkdownTable,
+  ul: (props) => {
+    return (
+      <ul
+        className={css({
+          listStyleType: "disc",
+          pl: 4,
+          my: 4,
+        })}
+        {...props}
+      />
+    );
+  },
+  li: (props) => {
+    return (
+      <li
+        className={css({
+          my: 4,
+          pl: 2,
+          "&::marker": {
+            color: "slate.600",
+          },
+        })}
+        {...props}
+      />
+    );
+  },
   blockquote: (props) => {
     return (
       <blockquote

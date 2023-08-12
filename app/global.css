@@ -1,7 +1,7 @@
 @layer reset, base, tokens, recipes, utilities;
 
-html,
-body {
+:root {
+  scroll-behavior: smooth;
   font-family:
     system-ui,
     -apple-system,

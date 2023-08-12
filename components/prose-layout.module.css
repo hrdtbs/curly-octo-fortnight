@@ -53,3 +53,49 @@
   font-size: var(--font-sizes-sm);
   overflow-x: auto;
 }
+
+.root pre > code[data-line-numbers] {
+  counter-reset: line;
+}
+
+.root pre > code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  margin-right: var(--spacing-4);
+  display: inline-block;
+  width: var(--spacing-4);
+  text-align: right;
+  color: inherit;
+}
+
+.root table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--colors-slate-200);
+}
+
+.root table thead {
+  border-bottom: 1px solid var(--colors-slate-200);
+  background-color: var(--colors-slate-200);
+}
+
+.root table th {
+  padding-block: var(--spacing-4);
+  padding-inline: var(--spacing-8);
+  font-weight: bolder;
+  border-bottom: 1px solid var(--colors-slate-200);
+}
+
+.root table th:not([align]) {
+  text-align: left;
+}
+
+.root table td {
+  padding-block: var(--spacing-4);
+  padding-inline: var(--spacing-8);
+  border-bottom: 1px solid var(--colors-slate-200);
+}
+
+.root table tr:last-child td {
+  border-bottom: none;
+}
