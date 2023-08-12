@@ -1,0 +1,101 @@
+/**
+ * Typography
+ */
+.root :where(h1, h2, h3, h4, h5, h6, p) {
+  margin: 1.5rem 0; /* Line height * 1 */
+}
+
+.root :where(h1, h2, h3) {
+  font-weight: lighter;
+}
+
+.root :where(h4, h5) {
+  font-weight: normal;
+}
+
+.root h1 {
+  font-size: 4.236rem; /* FontSize * (ScaleFactor ** 3) */
+  line-height: 6rem; /* LineHeight * 4 */
+}
+
+.root h2 {
+  font-size: 2.618rem; /* FontSize * (ScaleFactor ** 2) */
+  line-height: 4.5rem; /* LineHeight * 3 */
+}
+
+.root h3 {
+  font-size: 1.618rem; /* FontSize * (ScaleFactor ** 1) */
+  line-height: 3rem; /* LineHeight * 2 */
+}
+
+.root :where(h4, h5, h6, p) {
+  font-size: 1rem; /* FontSize * (ScaleFactor ** 0) */
+  line-height: 1.5rem; /* LineHeight * 1 */
+}
+
+.root code {
+  padding-inline: var(--spacing-1);
+  border-radius: var(--radii-sm);
+  background-color: var(--colors-slate-300);
+  font-family: var(--fonts-mono);
+  padding-block: var(--spacing-0\.5);
+}
+
+.root pre code {
+  padding: 0;
+  background-color: transparent;
+}
+
+.root pre {
+  border: 1px solid var(--colors-slate-200);
+  padding: var(--spacing-4);
+  max-width: 100%;
+  font-size: var(--font-sizes-sm);
+  overflow-x: auto;
+}
+
+.root pre > code[data-line-numbers] {
+  counter-reset: line;
+}
+
+.root pre > code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  margin-right: var(--spacing-4);
+  display: inline-block;
+  width: var(--spacing-4);
+  text-align: right;
+  color: inherit;
+}
+
+.root table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--colors-slate-200);
+}
+
+.root table thead {
+  border-bottom: 1px solid var(--colors-slate-200);
+  background-color: var(--colors-slate-200);
+}
+
+.root table th {
+  padding-block: var(--spacing-4);
+  padding-inline: var(--spacing-8);
+  font-weight: bolder;
+  border-bottom: 1px solid var(--colors-slate-200);
+}
+
+.root table th:not([align]) {
+  text-align: left;
+}
+
+.root table td {
+  padding-block: var(--spacing-4);
+  padding-inline: var(--spacing-8);
+  border-bottom: 1px solid var(--colors-slate-200);
+}
+
+.root table tr:last-child td {
+  border-bottom: none;
+}

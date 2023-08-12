@@ -1,7 +1,7 @@
 import config from "@/lib/siteConfig";
-import { cn } from "@/lib/utils";
 import { GitHub, Twitter } from "iconoir-react";
 import Link from "./link";
+import { css } from "@/styled-system/css";
 
 const socialLinks = [
   { icon: GitHub, href: config.socials.github, title: "Github" },
@@ -11,15 +11,26 @@ const socialLinks = [
 const Footer = () => {
   return (
     <footer
-      className={cn(
-        "flex flex-col items-center gap-8 px-2 py-10 lg:py-12",
-        "border-t border-borders text-foreground-secondary",
-      )}>
-      <div className="flex gap-4 justify-center">
+      className={css({
+        display: "grid",
+        gap: 8,
+        py: 12,
+        borderTop: "1px solid token(colors.slate.300)",
+      })}>
+      <div
+        className={css({
+          display: "flex",
+          gap: 4,
+          justifyContent: "center",
+        })}>
         {socialLinks.map((link) => (
           <Link
             key={link.href}
-            className="hover:text-accent"
+            className={css({
+              _hover: {
+                color: "amber.500",
+              },
+            })}
             target="_blank"
             href={link.href}
             aria-label={link.title}>
@@ -27,9 +38,16 @@ const Footer = () => {
           </Link>
         ))}
       </div>
-      <div className="text-center">
+      <div
+        className={css({
+          textAlign: "center",
+        })}>
         <p>Built using Next.js, Tailwind CSS and Contentlayer.</p>
-        <p className="text-sm mt-2">
+        <p
+          className={css({
+            fontSize: "sm",
+            mt: 2,
+          })}>
           © {new Date().getFullYear()}, hrdtbs. All rights reserved.
         </p>
       </div>

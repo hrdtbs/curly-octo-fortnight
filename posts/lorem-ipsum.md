@@ -69,57 +69,6 @@ Rendered:
 >
 > > see.
 
-## Callout cards
-
-Markup:
-
-````
-<Callout>This is the default callout card</Callout>
-
-<Callout variant="warning">This is a warning callout</Callout>
-
-<Callout variant="danger">
-  <p>This is a danger callout</p>
-
-    ```tsx
-    "use strict";
-
-    const obj = { a: "Hello", b: "World" };
-    const test = ["This", "is", "cool", "isn't", "it?"]
-    ```
-
-    ```tsx
-    const Page = () => {
-      return <div>Hellow World!</div>;
-    };
-    ```
-</Callout>
-````
-
-Rendered:
-
-<Callout>This is the default callout card</Callout>
-
-<Callout variant="warning">This is a warning callout</Callout>
-
-<Callout variant="danger">
-  <p>This is a danger callout</p>
-
-    ```tsx
-    "use strict";
-
-    const obj = { a: "Hello", b: "World" };
-    const test = ["This", "is", "cool", "isn't", "it?"]
-    ```
-
-    ```tsx
-    const Page = () => {
-      return <div>Hellow World!</div>;
-    };
-    ```
-
-</Callout>
-
 ## Lists
 
 Markup:

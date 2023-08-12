@@ -8,8 +8,8 @@ const MarkdownPreCode = ({
     return <pre {...restProps}>{children}</pre>;
 
   return (
-    <pre {...restProps} className="relative">
-      <MarkdownCopyCodeButton className="copy-btn" />
+    <pre {...restProps}>
+      <MarkdownCopyCodeButton />
       {children}
     </pre>
   );

@@ -5,16 +5,16 @@ import MDXContent from "@/components/mdx/mdx-content";
 import PostTag from "@/components/post-tag";
 import ProseLayout from "@/components/prose-layout";
 import ScrollButton from "@/components/scroll-button";
-import TocDesktop, { TocMobile } from "@/components/toc";
+import TocDesktop from "@/components/toc";
 import { allSortedBlogs } from "@/lib/contentlayer";
 import {
-  cn,
   formatDate,
   generateCommonMeta,
   isArrayNotEmpty,
   slugify,
 } from "@/lib/utils";
-import { Calendar, NavArrowLeft } from "iconoir-react";
+import { css } from "@/styled-system/css";
+import { Calendar } from "iconoir-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -47,33 +47,51 @@ const Page = ({ params }: { params: { slug: string } }) => {
   const moreThanOneHeading = post.headings && post.headings.length > 1;
 
   return (
-    <main
-      className={cn(
-        "my-10 lg:my-16 xl:my-20 [--_space:2.5rem] lg:[--_space:5rem] flex-1",
-      )}>
-      <BackButton />
+    <div
+      className={css({
+        px: {
+          base: 8,
+          md: 16,
+        },
+        pt: 8,
+        pb: 16,
+      })}>
       <div
-        className={cn(
-          "flex flex-col-reverse gap-8 pb-[--_space]",
-          "border-b border-b-borders",
-          "lg:flex-row [&>*]:flex-1",
-        )}>
-        <ProseLayout>
-          <div
-            className={cn(
-              "not-prose text-foreground-secondary text-sm font-medium",
-              "flex gap-6 flex-wrap mb-6 lg:mb-10",
-              "[&_svg]:text-xs [&>*]:flex [&>*]:gap-2",
-            )}>
-            <time dateTime={post.date}>
+        className={css({
+          mb: 16,
+        })}>
+        <BackButton />
+      </div>
+      <div>
+        <ProseLayout
+          className={css({
+            pb: 8,
+            borderBottom: "1px solid",
+            borderColor: "slate.200",
+          })}>
+          <div>
+            <time
+              dateTime={post.date}
+              className={css({
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                color: "slate.500",
+              })}>
               <Calendar />
               {formatDate(post.date, "full")}
             </time>
           </div>
-          <h1 className="md:leading-tight">{post.title}</h1>
-          <p className="mt-0 lg:mt-0">{post.description}</p>
+          <h1>{post.title}</h1>
+          <p>{post.description}</p>
           {isArrayNotEmpty(post.tags) && (
-            <div className={cn("flex gap-2 flex-wrap not-prose")}>
+            <div
+              className={css({
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 2,
+                mt: 2,
+              })}>
               {post.tags.map((tag) => (
                 <Link key={tag} href={`/tags/${slugify(tag)}`}>
                   <PostTag>{tag}</PostTag>
@@ -94,31 +112,36 @@ const Page = ({ params }: { params: { slug: string } }) => {
         )}
       </div>
       <div
-        className={cn(
-          "mt-[--_space]",
-          "xl:flex xl:flex-row-reverse xl:justify-between",
-        )}>
+        className={css({
+          lg: {
+            display: "grid",
+            gridTemplateColumns: "320px 1fr",
+            gap: 16,
+          },
+        })}>
         {moreThanOneHeading && (
           <TocDesktop
+            className={css({
+              display: {
+                base: "none",
+                lg: "block",
+              },
+              width: 280,
+            })}
             contents={post.headings}
-            className={cn(
-              "hidden sticky top-32 self-start flex-[0_0_25%] xl:block",
-            )}
           />
         )}
-        <ProseLayout
-          className={cn(
-            "max-xl:mx-auto",
-            post.headings.length < 1 && "mx-auto",
-          )}>
-          {moreThanOneHeading && (
-            <TocMobile contents={post.headings} className="xl:hidden" />
-          )}
-          <MDXContent code={post.body.code} />
-        </ProseLayout>
-        <ScrollButton />
+        <div
+          className={css({
+            overflow: "hidden",
+          })}>
+          <ProseLayout>
+            <MDXContent code={post.body.code} />
+          </ProseLayout>
+          <ScrollButton />
+        </div>
       </div>
-    </main>
+    </div>
   );
 };
 

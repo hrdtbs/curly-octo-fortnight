@@ -1,14 +1,12 @@
-import { cn } from "@/lib/utils";
-
+import { clsx } from "clsx";
+import styles from "./prose-layout.module.css";
 const ProseLayout = ({
   children,
   className,
   ...restProps
 }: React.ComponentProps<"div">) => {
   return (
-    <div
-      className={cn("prose prose-custom lg:prose-lg", className)}
-      {...restProps}>
+    <div {...restProps} className={clsx(styles.root, className)}>
       {children}
     </div>
   );

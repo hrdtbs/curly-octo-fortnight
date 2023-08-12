@@ -1,18 +1,25 @@
 import config from "@/lib/siteConfig";
 import Link from "@/components/link";
-import { cn } from "@/lib/utils";
+import { css } from "@/styled-system/css";
 
 const Header = () => {
   return (
-    <div
-      className={cn(
-        "sticky top-0 z-10 backdrop-blur-[10px] bg-background/80 shadow-sm",
-        "transition-colors",
-      )}>
-      <header className={cn("max-w-container-center flex items-center py-4")}>
-        <Link href="/" className={cn("text-lg font-bold mr-auto lg:text-xl")}>
-          {config.title}
-        </Link>
+    <div>
+      <header
+        className={css({
+          paddingBlock: "16px",
+          paddingInline: {
+            base: "16px",
+            md: "32px",
+          },
+          shadow: "xs",
+        })}>
+        <h1
+          className={css({
+            fontSize: "2xl",
+          })}>
+          <Link href="/">{config.title}</Link>
+        </h1>
       </header>
     </div>
   );

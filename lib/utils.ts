@@ -1,12 +1,6 @@
-import clsx, { ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
 import { slug } from "github-slugger";
 import { Metadata } from "next";
 import config from "../lib/siteConfig";
-
-export const cn = (...classNames: ClassValue[]) => {
-  return twMerge(clsx(classNames));
-};
 
 export const formatDate = (
   date: string | Date,

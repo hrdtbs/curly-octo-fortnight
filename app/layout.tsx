@@ -1,10 +1,9 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import config from "@/lib/siteConfig";
-import { cn } from "@/lib/utils";
-import "@/styles/global.css";
 import { Metadata } from "next";
-import styles from "@/app/layout.module.css";
+import "@/app/global.css";
+import { css } from "@/styled-system/css";
 
 export const metadata: Metadata = {
   title: {
@@ -58,14 +57,19 @@ export default function RootLayout({
   return (
     <html lang="ja" suppressHydrationWarning>
       <body
-        className={cn(
-          "text-foreground-primary bg-background min-h-screen font-sans",
-          "selection:bg-accent selection:text-white",
-        )}>
-        <Header />
-        <div className={styles.root}>
-          {children}
-          {peek}
+        className={css({
+          backgroundColor: "sky.50",
+          color: "slate.700",
+        })}>
+        <div
+          className={css({
+            minHeight: "100vh",
+          })}>
+          <Header />
+          <div>
+            {children}
+            {peek}
+          </div>
         </div>
         <Footer />
       </body>
