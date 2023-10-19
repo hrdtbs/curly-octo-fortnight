@@ -34,7 +34,7 @@
     "autoprefixer": "^10.4.14",
     "contentlayer": "^0.3.4",
     "eslint": "^8.45.0",
-    "eslint-config-next": "^13.4.12",
+    "eslint-config-next": "^13.5.6",
     "eslint-config-prettier": "^9.0.0",
     "iconoir-react": "^6.10.0",
     "mdast-flatten-image-paragraphs": "^1.0.0",
